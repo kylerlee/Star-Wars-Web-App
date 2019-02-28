@@ -1,9 +1,9 @@
 {
-  "name": "starwars",
-  "short_name": "SWApp",
+  "name": "Star Wars App",
+  "short_name": "SWA",
   "theme_color": "#2196f3",
   "background_color": "#2196f3",
-  "display": "standalone",
+  "display": "fullscreen",
   "Scope": "/",
   "start_url": "/",
   "icons": [

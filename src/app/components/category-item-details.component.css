@@ -1,0 +1,28 @@
+.spacer {
+    flex: 1 1 auto;
+  }
+.icon {
+    padding: 0 14px;
+}
+ul {
+  list-style-type: none;
+}
+
+td {
+  padding-bottom: 6px;
+}
+
+.enforcedWord{
+  font-weight: bold;
+  text-transform: capitalize;  
+  padding:10px;
+}
+
+.displayTable{
+  margin-left:auto; 
+  margin-right:auto;
+}
+
+body {
+  position:relative;
+}

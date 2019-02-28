@@ -1,0 +1,25 @@
+.spacer {
+    flex: 1 1 auto;
+  }
+.icon {
+    padding: 0 14px;
+}
+
+.capitalize {
+    text-transform: capitalize;
+    text-align: center;
+    flex: 1 1 auto;
+ }
+
+.main-div{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+.list_item{
+    font-size: 18px;    
+}
+
+  

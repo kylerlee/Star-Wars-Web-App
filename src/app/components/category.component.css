@@ -1,0 +1,10 @@
+.spacer {
+    flex: 1 1 auto;
+  }
+.icon {
+    padding: 0 14px;
+}
+mat-list-item {
+    border: 1px black solid;
+    margin: 10px;
+}

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { StarwarsService } from '../starwars.service';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { MyModel, MyArrayModel, Comment } from './model';
 import { Location } from '@angular/common';
 import { NgNavigatorShareService } from 'ng-navigator-share';
@@ -24,23 +24,29 @@ export class CategoryItemDetailsComponent implements OnInit {
   myList: MyModel[] = [];
   superList: MyArrayModel[] = [];
 
+  navigationSubscription;
+
   constructor(ngNavigatorShareService: NgNavigatorShareService,
     private location: Location,
     private starwarsService: StarwarsService,
     private router: Router,
     private activatedRoute: ActivatedRoute) {
     this.ngNavigatorShareService = ngNavigatorShareService;
+    this.navigationSubscription = this.router.events.subscribe((e: any) => {
+      if (e instanceof NavigationEnd) {
+
+        let url = this.activatedRoute.snapshot.params.url;
+        let tempArr = url.split('/').filter(el => el != "");
+        this.cat = tempArr[tempArr.length - 2];
+        this.id = this.activatedRoute.snapshot.params.id;
+        this.loadComments(this.activatedRoute.snapshot.params.url);
+        this.getCharacterDetails(this.activatedRoute.snapshot.params.url);
+      }
+    });
   }
 
   ngOnInit() {
-    let url = this.activatedRoute.snapshot.params.url;
-    let tempArr = url.split('/').filter(el => el != "");
-    this.cat = tempArr[tempArr.length - 2];
-    this.id = this.activatedRoute.snapshot.params.id;
 
-    this.loadComments(this.activatedRoute.snapshot.params.url);
-    this.getCharacterDetails(this.activatedRoute.snapshot.params.url);
-    console.log(this.router.url.substring(1));
   }
 
   getCharacterDetails(url: string) {
@@ -48,7 +54,6 @@ export class CategoryItemDetailsComponent implements OnInit {
       .then(result => {
 
 
-        console.info("checkekee: ", result)
         const DATA = result.everything;
 
         for (let k of Object.keys(DATA)) {
@@ -75,12 +80,12 @@ export class CategoryItemDetailsComponent implements OnInit {
 
           }
           else if (DATA[k] instanceof Array) {
-            let tempArray: Array<string> = []
+            let tempArray: Array<object> = []
 
             for (let url of DATA[k]) {
               this.starwarsService.getNameFromURL(url)
                 .then((result) => {
-                  tempArray.push(result)
+                  tempArray.push({ name: result, url: url });
                 })
                 .catch(err => console.log(err));
             }
@@ -155,6 +160,11 @@ export class CategoryItemDetailsComponent implements OnInit {
 
   back() {
     this.router.navigate(['/cat', this.cat, this.id]);
+  }
+
+  changeItem(thisURL: string) {
+    this.router.navigate(['/character/details', thisURL, this.id]);
+
   }
 
 }

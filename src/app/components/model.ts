@@ -10,7 +10,7 @@ export interface MyModel {
 
 export interface MyArrayModel {
     key: string;
-    value: Array<string>;
+    value: Array<object>;
 }
 
 export interface Comment {

@@ -26,3 +26,9 @@ td {
 body {
   position:relative;
 }
+
+.list{
+  color: blue;
+  text-decoration: blue;
+  text-decoration-line: underline;
+}

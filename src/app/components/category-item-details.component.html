@@ -14,10 +14,10 @@
     <td>{{ o.value }}</td>
   </tr>
   <tr *ngFor='let sup of superList'>
-    <td class="enforcedWord">{{ sup.key }}</td>
+    <td class="enforcedWord" >{{ sup.key }}</td>
     <td>
-      <div *ngFor='let v of sup.value'>
-        {{ v }}
+      <div class="list" *ngFor='let v of sup.value' (click)="changeItem(v.url)">
+        {{ v.name }}
       </div>
     </td>
   </tr>

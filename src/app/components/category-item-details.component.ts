@@ -383,7 +383,7 @@ export class CategoryItemDetailsComponent implements OnInit {
     this.ngNavigatorShareService.share({
       title: 'Star Wars Guide',
       text: 'Check out Star Wars Guide — it rocks!',
-      url: this.router.url,
+      url: "SA47StarWars/" + this.router.url,
     })
       .then(() => console.log('Successful share'))
       .catch((error) => console.log('Error sharing', error));

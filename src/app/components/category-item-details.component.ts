@@ -13,8 +13,8 @@ import { NgForm } from '@angular/forms';
 })
 export class CategoryItemDetailsComponent implements OnInit {
 
-  cat:string;
-  id : string;
+  cat: string;
+  id: string;
 
   imageID: string;
   imageURL: string;
@@ -35,12 +35,12 @@ export class CategoryItemDetailsComponent implements OnInit {
   ngOnInit() {
     let url = this.activatedRoute.snapshot.params.url;
     let tempArr = url.split('/').filter(el => el != "");
-    this.cat=tempArr[tempArr.length-2];
-    this.id = this.activatedRoute.snapshot.params.id; 
+    this.cat = tempArr[tempArr.length - 2];
+    this.id = this.activatedRoute.snapshot.params.id;
 
     this.loadComments(this.activatedRoute.snapshot.params.url);
     this.getCharacterDetails(this.activatedRoute.snapshot.params.url);
-    console.log(this.router.url.substring(1,));
+    console.log(this.router.url.substring(1));
   }
 
   getCharacterDetails(url: string) {
@@ -60,7 +60,7 @@ export class CategoryItemDetailsComponent implements OnInit {
             && k !== "url"
             && k !== "homeworld") {
             this.myList.push({
-              key: k.replace('_', ' ').replace('_',' '),
+              key: k.replace('_', ' ').replace('_', ' '),
               value: DATA[k]
             })
           }
@@ -68,7 +68,7 @@ export class CategoryItemDetailsComponent implements OnInit {
             this.starwarsService.getNameFromURL(DATA[k])
               .then((result) => {
                 this.myList.push({
-                  key: k.replace('_', ' ').replace('_',' '),
+                  key: k.replace('_', ' ').replace('_', ' '),
                   value: result
                 })
               })
@@ -267,7 +267,7 @@ export class CategoryItemDetailsComponent implements OnInit {
         (result: Comment[]) => {
           console.info('url------- >> ', url);
           console.info('Comment >> ', result);
-          this.comments = result.filter(x => x.url == url).length==0?this.comments:result.filter(x => x.url == url)[0];
+          this.comments = result.filter(x => x.url == url).length == 0 ? this.comments : result.filter(x => x.url == url)[0];
           console.info('Filtered comment >> ', this.comments);
         }
       )
@@ -299,7 +299,7 @@ export class CategoryItemDetailsComponent implements OnInit {
     this.ngNavigatorShareService.share({
       title: 'Star Wars Guide',
       text: 'Check out Star Wars Guide — it rocks!',
-      url: 'https://kylerlee.github.io/SA47StarWars' + this.router.url.substring(1,),
+      url: 'https://kylerlee.github.io/SA47StarWars' + this.router.url,
     })
       .then(() => console.log('Successful share'))
       .catch((error) => console.log('Error sharing', error));
@@ -307,7 +307,7 @@ export class CategoryItemDetailsComponent implements OnInit {
 
 
   back() {
-    this.router.navigate(['/cat',this.cat,this.id]);
+    this.router.navigate(['/cat', this.cat, this.id]);
   }
 
 }

@@ -8,3 +8,8 @@ mat-list-item {
     border: 1px black solid;
     margin: 10px;
 }
+
+
+.capitalize {
+    text-transform: capitalize;
+}

@@ -125,7 +125,6 @@ export class CategoryItemDetailsComponent implements OnInit {
   ngOnInit() {
     this.loadComments(this.activatedRoute.snapshot.params.url);
     this.getCharacterDetails(this.activatedRoute.snapshot.params.url);
-
   }
 
   getCharacterDetails(url: string) {
@@ -145,7 +144,7 @@ export class CategoryItemDetailsComponent implements OnInit {
             && k !== "url"
             && k !== "homeworld") {
             this.myList.push({
-              key: k.replace('_', ' '),
+              key: k.replace('_', ' ').replace('_',' '),
               value: DATA[k]
             })
           }
@@ -153,7 +152,7 @@ export class CategoryItemDetailsComponent implements OnInit {
             this.starwarsService.getNameFromURL(DATA[k])
               .then((result) => {
                 this.myList.push({
-                  key: k.replace('_', ' '),
+                  key: k.replace('_', ' ').replace('_',' '),
                   value: result
                 })
               })
@@ -352,7 +351,7 @@ export class CategoryItemDetailsComponent implements OnInit {
         (result: Comment[]) => {
           console.info('url------- >> ', url);
           console.info('Comment >> ', result);
-          this.comments = result.filter(x => x.url == url)[0];
+          this.comments = result.filter(x => x.url == url).length==0?this.comments:result.filter(x => x.url == url)[0];
           console.info('Filtered comment >> ', this.comments);
         }
       )
@@ -384,7 +383,7 @@ export class CategoryItemDetailsComponent implements OnInit {
     this.ngNavigatorShareService.share({
       title: 'Star Wars Guide',
       text: 'Check out Star Wars Guide — it rocks!',
-      url: 'https://developers.google.com/web',
+      url: this.router.url,
     })
       .then(() => console.log('Successful share'))
       .catch((error) => console.log('Error sharing', error));

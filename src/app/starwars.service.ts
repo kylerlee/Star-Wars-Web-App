@@ -5,7 +5,6 @@ import Dexie from 'dexie';
 
 
 const URL = 'https://swapi.co/api/';
-const URL1 = "https://starwars-visualguide.com/#/"
 
 @Injectable()
 export class StarwarsService {
@@ -89,6 +88,10 @@ export class StarwarsService {
         return (this.commentDB.table('comment').toArray());
     }
 
-
+    AllCategory() {
+        return (
+            this.http.get(URL).toPromise()
+        );
+    }
 
 }

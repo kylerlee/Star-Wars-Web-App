@@ -5,7 +5,6 @@ import { MatToolbarModule, MatButtonModule, MatTableModule, MatInputModule, MatI
 const MODULES = [
     FlexLayoutModule, MatToolbarModule, MatButtonModule, MatTableModule, MatInputModule, MatIconModule, MatFormFieldModule,
     MatListModule, MatCardModule, MatPaginatorModule
-    // NgxPaginationModule
 ]
 
 @NgModule({

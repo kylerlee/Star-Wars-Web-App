@@ -24,7 +24,7 @@ export class CategoryComponent implements OnInit {
             url: result[k]
           });
         }
-console.log(this.itemNames);
+        console.log(this.itemNames);
       })
       .catch((error) => console.log(error));
 

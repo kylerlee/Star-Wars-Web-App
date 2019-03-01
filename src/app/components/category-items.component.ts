@@ -70,22 +70,6 @@ export class CategoryItemsComponent implements OnInit, OnDestroy {
         // to retrieve the list of items of a particular category
         this.DATA = result.cList;
         console.log(this.DATA);
-        // const DATA1 = result.url;
-        // console.log(DATA1);
-
-        // to retrieve only name and url from the list of items 
-        // this.itemnames = [];
-        // for(let i in DATA) {
-        //   // because all categories has the field 'results.name' except for Films is 'results.title'
-        //   if (DATA[i].name != null)
-        //     this.namessss = DATA[i].name;
-        //   else
-        //     this.namessss = DATA[i].title;
-
-        //   this.itemnames.push({          
-        //     name: this.namessss,
-        //     url: DATA[i].url })
-        // }
       })
       .catch(error => {
         console.error('Error', error);

@@ -1,37 +1,37 @@
 <div class="box">
-<mat-toolbar color="primary">
-  <span>Star Wars</span>
-  <span class="spacer"></span>
-  <mat-icon class="icon" (click)="back()">arrow_back_ios</mat-icon>
-</mat-toolbar>
-
-
-
-<div fxLayout="column row" fxLayoutAlign="center center">
-  <mat-toolbar color="accent">
-    <span class="capitalize">{{ categoryTitle }}</span>
+  <mat-toolbar color="primary">
+    <span>Star Wars</span>
+    <span class="spacer"></span>
+    <mat-icon class="icon" (click)="back()">arrow_back_ios</mat-icon>
   </mat-toolbar>
 
-  <mat-list >
-    <mat-list-item class="list_item" *ngFor="let g of DATA" (click)="retrieveDetails(g['url'])">
-      <span >{{ g['name'] }}</span>
-    </mat-list-item>
-  </mat-list>
-</div>
 
-<mat-toolbar class="box">
-  <button *ngIf="previosPage != null" mat-raised-button (click)="previousPage()">
-    < </button> <span class="spacer"></span>
 
-      <div *ngFor="let p of paginationNo">
-        <button [ngClass]="{
+  <div fxLayout="column row" fxLayoutAlign="center center">
+    <mat-toolbar color="accent">
+      <span class="capitalize">{{ categoryTitle }}</span>
+    </mat-toolbar>
+
+    <mat-list>
+      <mat-list-item class="list_item" *ngFor="let g of DATA" (click)="retrieveDetails(g['url'])">
+        <span>{{ g['name'] }}</span>
+      </mat-list-item>
+    </mat-list>
+  </div>
+
+  <mat-toolbar class="box">
+    <button *ngIf="previosPage != null" mat-raised-button (click)="previousPage()">
+      < </button> <span class="spacer"></span>
+
+        <div *ngFor="let p of paginationNo">
+          <button [ngClass]="{
           'mat-icon-button': p != currentID,
           'mat-fab':p == currentID
         }" (click)="goToPage(p)">{{ p }}</button>
-      </div>
+        </div>
 
-      <span class="spacer"></span>
+        <span class="spacer"></span>
 
-      <button *ngIf="nxtPage != null" mat-raised-button (click)="nextPage()"> > </button>
-</mat-toolbar>
+        <button *ngIf="nxtPage != null" mat-raised-button (click)="nextPage()"> > </button>
+  </mat-toolbar>
 </div>

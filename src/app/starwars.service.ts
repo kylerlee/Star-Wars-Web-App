@@ -29,7 +29,6 @@ export class StarwarsService {
                             return (
                                 {
                                     name: x['name'] == null ? x['title'] : x['name'],
-                                    // title:,
                                     url: x['url']
                                 });
                         }

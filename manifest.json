@@ -4,7 +4,7 @@
   "theme_color": "#2196f3",
   "background_color": "#2196f3",
   "display": "fullscreen",
-  "Scope": "/",
+  "Scope": "SA47StarWars/",
   "start_url": "SA47StarWars/",
   "icons": [
     {

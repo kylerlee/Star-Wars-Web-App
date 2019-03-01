@@ -10,7 +10,7 @@ const ROUTES: Routes = [
     { path: "", component: CategoryComponent },
     { path: "home", component: CategoryComponent },
     { path: "cat/:cat/:id", component: CategoryItemsComponent },
-    { path: "character/details/:url", component: CategoryItemDetailsComponent },
+    { path: "character/details/:url/:id", component: CategoryItemDetailsComponent },
     { path: "**", redirectTo: "/", pathMatch: 'full' }
 ]
 

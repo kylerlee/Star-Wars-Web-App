@@ -1,13 +1,12 @@
 <mat-toolbar color="primary">
-  <span>StarWars</span>
+  <span>Star Wars</span>
   <span class="spacer"></span>
+  <mat-icon class="icon" (click)="share()">share</mat-icon>
   <mat-icon class="icon" (click)="back()">arrow_back_ios</mat-icon>
 </mat-toolbar>
 
 
-<button type="submit" mat-raised-button (click)="share()">
-  <mat-icon>share</mat-icon>
-</button>
+
 
 
 <table class="displayTable">
@@ -26,23 +25,25 @@
       </div>
     </td>
   </tr>
+  <tr>
+    <td colspan="2">
+      <div style="text-align: left; padding-left: 2%">
+        <form #form="ngForm" (ngSubmit)="addComment(form)">
+          <mat-form-field>
+            <textarea type="text" name="comment" matInput placeholder="Leave a comment" required ngModel>
+              </textarea>
+          </mat-form-field><br />
+          <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">Submit</button>
+        </form>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2">
+        <div style="text-align: left; padding-left: 2%">
+      Comment:
+      {{ comments.comment}}
+      </div>
+    </td>
+  </tr>
 </table>
-
-
-<form #form="ngForm" (ngSubmit)="addComment(form)">
-  <mat-form-field>
-    <textarea type="text" name="comment" matInput placeholder="Leave a comment" required ngModel>
-      </textarea>
-  </mat-form-field>
-  <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">Submit</button>
-</form>
-
-Comment:
-{{ comments.comment}}
-
-<br />
-<!-- <ul>
-  <li *ngFor="let c of comments">
-    {{c.comment}}
-  </li>
-</ul> -->

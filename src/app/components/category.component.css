@@ -5,8 +5,12 @@
     padding: 0 14px;
 }
 mat-list-item {
-    border: 1px black solid;
-    margin: 10px;
+    font-size: 18px;    
+    border: solid 1px black;
+    font-weight: bolder;
+    margin: 15px;
+    border-radius: 5%;
+    box-shadow:5px 5px 5px 5px indigo;
 }
 
 

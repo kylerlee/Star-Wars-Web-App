@@ -116,7 +116,7 @@ export class CategoryItemsComponent implements OnInit, OnDestroy {
 
   retrieveDetails(url: string) {
     // to change it to 6 different components for routing to each category
-    this.router.navigate(['/character/details', url]);
+    this.router.navigate(['/character/details', url, this.currentID]);
   }
 
 }

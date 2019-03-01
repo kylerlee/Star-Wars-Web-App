@@ -1,13 +1,15 @@
 <mat-toolbar color="primary">
-  <span>StarWars</span>
+  <span>Star Wars</span>
 </mat-toolbar>
 
-<div>
+<div fxLayout="column row" fxLayoutAlign="center center">
   <mat-list fxLayout="column">
     <span fxFlex="50" *ngFor="let c of itemNames">
-      
-      <mat-list-item class="capitalize" *ngIf="c.name =='characters'" (click)="selectCat('people')">{{c.name }}</mat-list-item>
-      <mat-list-item class="capitalize" *ngIf="c.name !='characters'" (click)="selectCat(c.name)">{{c.name }}</mat-list-item>
+
+      <mat-list-item class="capitalize" *ngIf="c.name =='characters'" (click)="selectCat('people')">{{c.name }}
+      </mat-list-item>
+      <mat-list-item class="capitalize" *ngIf="c.name !='characters'" (click)="selectCat(c.name)">{{c.name }}
+      </mat-list-item>
     </span>
   </mat-list>
 </div>

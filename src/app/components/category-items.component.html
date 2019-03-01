@@ -1,5 +1,6 @@
+<div class="box">
 <mat-toolbar color="primary">
-  <span>StarWars</span>
+  <span>Star Wars</span>
   <span class="spacer"></span>
   <mat-icon class="icon" (click)="back()">arrow_back_ios</mat-icon>
 </mat-toolbar>
@@ -11,14 +12,14 @@
     <span class="capitalize">{{ categoryTitle }}</span>
   </mat-toolbar>
 
-  <mat-list>
-    <mat-list-item *ngFor="let g of DATA" (click)="retrieveDetails(g['url'])">
-      <span class="list_item">{{ g['name'] }}</span>
+  <mat-list >
+    <mat-list-item class="list_item" *ngFor="let g of DATA" (click)="retrieveDetails(g['url'])">
+      <span >{{ g['name'] }}</span>
     </mat-list-item>
   </mat-list>
 </div>
 
-<mat-toolbar>
+<mat-toolbar class="box">
   <button *ngIf="previosPage != null" mat-raised-button (click)="previousPage()">
     < </button> <span class="spacer"></span>
 
@@ -33,3 +34,4 @@
 
       <button *ngIf="nxtPage != null" mat-raised-button (click)="nextPage()"> > </button>
 </mat-toolbar>
+</div>

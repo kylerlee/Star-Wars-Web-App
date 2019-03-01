@@ -13,103 +13,13 @@ import { NgForm } from '@angular/forms';
 })
 export class CategoryItemDetailsComponent implements OnInit {
 
+  cat:string;
+  id : string;
+
   imageID: string;
   imageURL: string;
   comments: Comment = { url: '', comment: '' };
   private ngNavigatorShareService: NgNavigatorShareService;
-
-  // character: Character = {
-  //   name: "",
-  //   height: "",
-  //   mass: "",
-  //   hair_color: "",
-  //   skin_color: "",
-  //   eye_color: "",
-  //   birth_year: "",
-  //   gender: "",
-  //   homeworld: "",
-  //   films: Array<string>(),
-  //   species: Array<string>(),
-  //   vehicles: Array<string>(),
-  //   starships: Array<string>()
-  // }
-
-  // starship: Starship = {
-  //   name: "",
-  //   model: "",
-  //   manufacturer: "",
-  //   cost_in_credits: "",
-  //   length: "",
-  //   max_atmosphering_speed: "",
-  //   crew: "",
-  //   passengers: "",
-  //   cargo_capacity: "",
-  //   consumables: "",
-  //   hyperdrive_rating: "",
-  //   MGLT: "",
-  //   starship_class: "",
-  //   pilots: Array<Character>(),
-  //   films: Array<Film>()
-  // }
-
-  // species: Species = {
-  //   name: "",
-  //   classification: "",
-  //   designation: "",
-  //   average_height: "",
-  //   skin_colors: "",
-  //   hair_colors: "",
-  //   eye_colors: "",
-  //   average_lifespan: "",
-  //   homeworld: "",
-  //   language: "",
-  //   people: Array<Character>(),
-  //   films: Array<Film>()
-  // }
-
-  // film: Film = {
-  //   title: "",
-  //   episode_id: "",
-  //   opening_crawl: "",
-  //   director: "",
-  //   producer: "",
-  //   release_date: "",
-  //   characters: Array<Character>(),
-  //   planets: Array<Planet>(),
-  //   starships: Array<Starship>(),
-  //   vehicles: Array<Vehicle>(),
-  //   species: Array<Species>()
-  // }
-
-  // planet: Planet = {
-  //   name: "",
-  //   rotation_period: "",
-  //   orbital_period: "",
-  //   diameter: "",
-  //   climate: "",
-  //   gravity: "",
-  //   terrain: "",
-  //   surface_water: "",
-  //   population: "",
-  //   residents: Array<Character>(),
-  //   films: Array<Film>()
-  // }
-
-  // vehicle: Vehicle = {
-  //   name: "",
-  //   model: "",
-  //   manufacturer: "",
-  //   cost_in_credits: "",
-  //   length: "",
-  //   max_atmosphering_speed: "",
-  //   crew: "",
-  //   passengers: "",
-  //   cargo_capacity: "",
-  //   consumables: "",
-  //   vehicle_class: "",
-  //   pilots: Array<Character>(),
-  //   films: Array<Film>()
-  // }
 
   myList: MyModel[] = [];
   superList: MyArrayModel[] = [];
@@ -123,8 +33,14 @@ export class CategoryItemDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
+    let url = this.activatedRoute.snapshot.params.url;
+    let tempArr = url.split('/').filter(el => el != "");
+    this.cat=tempArr[tempArr.length-2];
+    this.id = this.activatedRoute.snapshot.params.id; 
+
     this.loadComments(this.activatedRoute.snapshot.params.url);
     this.getCharacterDetails(this.activatedRoute.snapshot.params.url);
+    console.log(this.router.url.substring(1,));
   }
 
   getCharacterDetails(url: string) {
@@ -383,7 +299,7 @@ export class CategoryItemDetailsComponent implements OnInit {
     this.ngNavigatorShareService.share({
       title: 'Star Wars Guide',
       text: 'Check out Star Wars Guide — it rocks!',
-      url: "SA47StarWars/" + this.router.url,
+      url: 'https://kylerlee.github.io/SA47StarWars' + this.router.url.substring(1,),
     })
       .then(() => console.log('Successful share'))
       .catch((error) => console.log('Error sharing', error));
@@ -391,7 +307,7 @@ export class CategoryItemDetailsComponent implements OnInit {
 
 
   back() {
-    this.location.back();
+    this.router.navigate(['/cat',this.cat,this.id]);
   }
 
 }

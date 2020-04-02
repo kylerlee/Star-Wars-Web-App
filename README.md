@@ -1,6 +1,6 @@
-# Starwars
+# Star-Wars-Web-App
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.1.
+A small client-side application (Angular 7) that provides information for the Star Wars movies.
 
 ## Development server
 
